@@ -5,9 +5,9 @@ $ git clone https://github.com/Empressive/intranet-tasks.git
 $ cd intranet-tasks
 ```
 #### Requirements
-Pip
-Python 3.5
-Django 2.0
+  - Pip
+  - Python 3.5
+  - Django 2.0
 
 #### Virtual enironment
 ```
