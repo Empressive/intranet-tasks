@@ -1,0 +1,44 @@
+{% extends 'dinner.html' %}
+{% load static %}
+{% block body %}
+    <script src="{% static 'js/vocabulary.js' %}?v=20171222"></script>
+    <div class="content-block">
+        <div class="main-container">
+            <div class="title">Vocabulary</div>
+        </div>
+        <div class="content-separator">
+            <div class="main-container" style="padding: 10px 0 10px 0">
+                <input name="term-name" style="padding: 6px 0;">
+                <div class="letters-buttons" style="margin: 2px 0 0 0">
+                    <button data--letter="ALL" class="selected-button" style="width: 30px">ALL</button>
+                    {% for letter in letters %}
+                        <button data--letter="{{ letter }}" style="width: 30px">{{ letter }}</button>
+                    {% endfor %}
+                </div>
+                <div class="category-buttons" style="margin: 5px 0 0 0">
+                    {% for category in categories %}
+                        <button data--category="{{ category.0 }}">
+                            {{ category.0 }}
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="secondary-container">
+        {% for term in terms %}
+            <div class="term" data--category="{{ term.category }}" data--name="{{ term.name }}"
+                 data--letter="{{ term.name | slice:"1" | upper }}">
+                <div class="main-container" style="margin-bottom: 10px">
+                    <div class="term-header">
+                        <div class="term-name"><b>{{ term.name }}</b></div>
+                        <div class="term-category">{{ term.category }}</div>
+                    </div>
+                </div>
+                <div class="term-description">
+                    {{ term.description }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,246 @@
+@main-background-color: #f0f0f0;
+@line-color: #e0e0e0;
+@person-line-color: #ffffff;
+
+@title-color: #9b9b9b;
+
+@minimal-page-width: 950px;
+@maximal-page-width: @minimal-page-width;
+@minimal-margin: 80px;
+
+@padding-left-side: 20px;
+
+html {
+  height: 100%;
+  min-width: calc(@minimal-page-width + @minimal-margin);
+  background-color: @main-background-color;
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content-block {
+  margin: 0;
+}
+
+.main-container {
+  margin: 20px auto;
+  min-width: @minimal-page-width;
+  max-width: @maximal-page-width;
+}
+
+.content-separator {
+  width: 100%;
+  background-color: @line-color;
+
+  .main-container {
+    .title {
+      padding: 1px 0 3px 0;
+    }
+  }
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 300;
+  color: @title-color;
+}
+
+.main-text {
+  font-size: 13px;
+  color: #212121;
+}
+
+.person {
+  margin: 0 0 50px 0;
+}
+
+.person-card {
+  width: calc(~"100% - 140px");;
+  display: inline-block;
+  margin: 5px 0 0 -1px;
+
+  .person-header {
+    width: 100%;
+    height: 52px;
+    padding: 0 0 5px 0;
+    background-color: @person-line-color;
+    vertical-align: middle;
+
+    .person-information {
+      display: inline-block;
+      width: 40%;
+      .person-name {
+        margin: 2px 0 0 @padding-left-side;
+      }
+      .person-position {
+        margin: 2px 0 0 @padding-left-side;
+      }
+    }
+
+    .person-request {
+      width: 60%;
+      height: 100%;
+      display: inline-block;
+      float: right;
+      font-size: 11px;
+      color: #b9b9b9;
+
+      .person-request-date {
+        margin: 13px @padding-left-side 0 0;
+        float: right;
+        span {
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .person-name {
+      font-size: 25px;
+      color: @title-color;
+    }
+    .person-position {
+      font-size: 13px;
+      color: @title-color;
+    }
+  }
+
+  .person-footer {
+    padding: 5px 0 0 @padding-left-side;
+
+    .person-description {
+      font-size: 13px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .person-card {
+    width: calc(~"100% - 147px");
+    margin: 5px 0 0 -5px;
+  }
+}
+
+.person-photo {
+  vertical-align: top;
+  display: inline-block;
+  width: 136px;
+  height: 136px;
+  background-color: #ffffff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+.person-request-icons {
+  margin: 20px 0 0 0;
+
+  .small-icon {
+    vertical-align: top;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .person-request-counter {
+    margin: 9px 0 0 @padding-left-side;
+  }
+}
+
+button {
+  color: #ffffff;
+  background-color: #1978c4;
+  border: none;
+  border-radius: 3px;
+  height: 30px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.cancel-button {
+  background-color: #aa0000
+}
+
+.category-buttons {
+  button {
+    display: inline-block;
+    height: 25px;
+    padding: 2px 10px;
+    color: #f5f5f5;
+    background-color: #b9b9b9;
+  }
+
+  .selected-button {
+    background-color: #919191;
+  }
+}
+
+.letters-buttons {
+  button {
+    display: inline-block;
+    height: 20px;
+    padding: 0;
+    font-size: 11px;
+    color: @title-color;
+    background-color: #e0e0e0;
+  }
+
+  .selected-button {
+    background-color: #ffffff;
+  }
+}
+
+.term {
+  margin: 5px auto;
+
+  .term-header {
+    width: 100%;
+    .term-name {
+      font-size: 20px;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .term-category {
+      color: @title-color;
+      display: inline-block;
+      float: right;
+    }
+  }
+}
+
+.secondary-container {
+  margin: 0 auto;
+  min-width: @minimal-page-width + 40px;
+  max-width: @maximal-page-width + 40px;
+
+  .term-description {
+    padding: 10px 20px;
+    background-color: #ffffff;
+  }
+}

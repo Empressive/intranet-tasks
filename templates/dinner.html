@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intranet</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet/less" type="text/css" href="{% static 'styles/main.less' %}?v=20171224">
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/less.min.js' %}"></script>
+</head>
+<body>
+{% block body %}
+    <div class="content-block">
+        <div class="main-container">
+            <div class="title">Ужины с интересными людьми</div>
+            <div class="main-text">
+                <p>
+                    У нас в офисе проводятся ужины с основателями и менеджерами Команды. На ужин приглашается
+                    по 6-7 человек.
+                </p>
+                <p>
+                    Основная идея этих ужинов — собрать Островитян из разных команд и познакомить их друг с другом.<br>
+                    Если у тебя есть вопросы, это так же может быть отличной возможностью их задать.
+                </p>
+                <p>
+                    Координацией участников и временем проведения занимается Олеся Кащеева.<br>
+                    Чтобы записаться на ужин, выбери ниже одного или несколько интересущющих тебя людей.<br>
+                    Дату и время тебе сообщат позже по электронной почте.
+                </p>
+            </div>
+        </div>
+        <div class="content-separator">
+            <div class="main-container">
+                <div class="title">С кем бы ты хотел поужинать?</div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="person">
+                <div class="person-photo"
+                     style="background-image: url('{% static 'img/PphlubnC_400x400.jpg' %}');">
+                </div>
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-information">
+                            <div class="person-name">Evgeny Sheyderman</div>
+                            <div class="person-position">Head of Business Analytics</div>
+                        </div>
+                        <div class="person-request">
+                            <div class="person-request-date">
+                                <span>DINNER DATE WILL BE ANNOUNCED LATER</span>
+                                <button class="cancel-button">CANCEL REQUEST</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-footer">
+                        <div class="person-description">
+                            Работаю в островке с 2013года. До этого занимался финансовым консалтингом в компании Большой
+                            Четверки, но понял, что гиблое дело) Сейчас отвечаю за аналитику, создание инструментов для
+                            работы с данными, анализ этих самых данных и последующее их применение на благо Островка.
+                            Люблю
+                            горы, спорт и общение, хотя по натуре скорее интроверт)
+                        </div>
+                        <div class="person-request-icons">
+                            <div class="person-request-icons">
+                                <div class="small-icon"
+                                     style="background-image: url('{% static 'img/x_46132c92.jpg' %}');"></div>
+                                <div class="small-icon"
+                                     style="background-image: url('{% static 'img/HwDf1GfXXek.jpg' %}');"></div>
+                                <div class="person-request-counter" style="display: inline-block;"><b>2</b> requests
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="person">
+                <div class="person-photo"
+                     style="background-image: url('{% static 'img/HwDf1GfXXek.jpg' %}');">
+                </div>
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-information">
+                            <div class="person-name">Alexey Kudryavtsev</div>
+                            <div class="person-position">Senior Developer</div>
+                        </div>
+                        <div class="person-request">
+                            <div class="person-request-date">
+                                <span>DINNER DATE WILL BE ANNOUNCED LATER</span>
+                                <button>SEND REQUEST</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-footer">
+                        <div class="person-description">
+                            Идейные соображения высшего порядка, а также консультация с широким активом влечет за собой
+                            процесс внедрения и модернизации системы обучения кадров, соответствует насущным
+                            потребностям.
+                            Товарищи! укрепление и развитие структуры требуют от нас анализа форм развития. Идейные
+                            соображения высшего порядка, а также дальнейшее развитие различных форм деятельности
+                            позволяет
+                            оценить значение существенных финансовых и административных условий. Товарищи! новая модель
+                            организационной деятельности в значительной степени обуславливает создание соответствующий
+                            условий активизации. Товарищи! новая модель организационной деятельности представляет собой
+                            интересный эксперимент проверки позиций, занимаемых участниками в отношении поставленных
+                            задач.
+
+                        </div>
+                        <div class="person-request-icons">
+                            <div class="person-request-icons">
+                                <div class="small-icon"
+                                     style="background-image: url('{% static 'img/x_46132c92.jpg' %}');"></div>
+                                <div class="small-icon"
+                                     style="background-image: url('{% static 'img/PphlubnC_400x400.jpg' %}');"></div>
+                                <div class="person-request-counter" style="display: inline-block;"><b>2</b> requests
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="person">
+                <div class="person-photo"
+                     style="background-image: url('{% static 'img/x_46132c92.jpg' %}');">
+                </div>
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-information">
+                            <div class="person-name">Maxim Nikitin</div>
+                            <div class="person-position">Front-end Developer</div>
+                        </div>
+                        <div class="person-request">
+                            <div class="person-request-date">
+                                <span>DINNER DATE WILL BE ANNOUNCED LATER</span>
+                                <button>SEND REQUEST</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-footer">
+                        <div class="person-description">
+                            С другой стороны дальнейшее развитие различных форм деятельности требуют определения и
+                            уточнения
+                            форм развития. Значимость этих проблем настолько очевидна, что укрепление и развитие
+                            структуры
+                            способствует подготовки и реализации соответствующий условий активизации. Таким образом
+                            рамки и
+                            место обучения кадров требуют от нас анализа форм развития. Значимость этих проблем
+                            настолько
+                            очевидна, что рамки и место обучения кадров представляет собой интересный эксперимент
+                            проверки
+                            новых предложений.
+                        </div>
+                        <div class="person-request-icons">
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/x_46132c92.jpg' %}');"></div>
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/HwDf1GfXXek.jpg' %}');"></div>
+
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/PphlubnC_400x400.jpg' %}');"></div>
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/x_46132c92.jpg' %}');"></div>
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/HwDf1GfXXek.jpg' %}');"></div>
+                            <div class="small-icon"
+                                 style="background-image: url('{% static 'img/PphlubnC_400x400.jpg' %}');"></div>
+                            <div class="person-request-counter" style="display: inline-block;"><b>6</b> requests</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
