@@ -1,13 +1,18 @@
 # Installation
+Some rows of this documentation are suitable only for ubuntu operating system
+
+#### Istall packages
+```
+$ sudo apt-get install git
+$ sudo apt-get install python-pip
+$ sudo apt-get install python3-venv
+```
+
 #### Git repository
 ```
 $ git clone https://github.com/Empressive/intranet-tasks.git
 $ cd intranet-tasks
 ```
-#### Requirements
-  - Pip
-  - Python 3.5
-  - Django 2.0
 
 #### Virtual enironment
 ```
