@@ -1,7 +1,7 @@
 # Installation
 Some rows of this documentation are suitable only for ubuntu operating system
 
-#### Istall packages
+#### Install packages
 ```
 $ sudo apt-get install git
 $ sudo apt-get install python-pip
