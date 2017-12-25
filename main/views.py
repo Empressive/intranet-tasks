@@ -21,7 +21,7 @@ class BaseApiView(View):
         return JsonResponse(self.response['data'], safe=False)
 
     def post(self, request):
-        raise HttpResponse(status=501)
+        return HttpResponse(status=501)
 
     def get_logic(self, request):
         raise NotImplementedError
@@ -99,6 +99,8 @@ class ApiView(BaseApiView):
 
             if key == 'parent':
                 query['parent__name__icontains'] = params[key]
+
+        self.response['code'] = 200
 
         todo = ToDo.objects.filter(**query).values()
 
