@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Dinner.as_view()),
     path('vocabulary/', views.Vocabulary.as_view()),
+    path('api/', views.ApiView.as_view()),
 ]

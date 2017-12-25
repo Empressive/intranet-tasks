@@ -7,3 +7,9 @@ CATEGORIES_CHOICES = (
     ('Product', 'Product'),
     ('Supply', 'Supply'),
 )
+
+PRIORITY_CHOICES = (
+    ('Low', 'Low'),
+    ('Normal', 'Normal'),
+    ('High', 'High')
+)

@@ -27,6 +27,7 @@ $ source ./env/bin/activate
 
 #### Launching
 ```
+(.env)$ python3 manage.py test
 (.env)$ python3 manage.py runserver
 ```
 
@@ -34,7 +35,7 @@ $ source ./env/bin/activate
 | Task  | URL |
 | ------------- | ------------- |
 | Front-end  | http://127.0.0.1:8000/  |
+| API  | http://127.0.0.1:8000/api/  |
 | Javascript  | http://127.0.0.1:8000/vocabulary/  |
-
 
 
