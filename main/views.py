@@ -30,13 +30,11 @@ class Vocabulary(TemplateView):
 
 
 class ApiView(View):
-    response = []
-
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        self.response = []
+        response = []
 
         params = request.GET.copy()
         query = {}
@@ -45,9 +43,9 @@ class ApiView(View):
 
         if not params:
             for row in todo.all().values():
-                self.response.append(row)
+                response.append(row)
 
-            return JsonResponse(self.response, safe=False)
+            return JsonResponse(response, safe=False)
 
         for key in params:
             if key not in ['name', 'description', 'is_done', 'priority', 'parent']:
@@ -88,9 +86,9 @@ class ApiView(View):
         todo = todo.filter(**query).values()
 
         for row in todo:
-            self.response.append(row)
+            response.append(row)
 
-        return JsonResponse(self.response, safe=False)
+        return JsonResponse(response, safe=False)
 
     def post(self, request):
         return HttpResponseNotAllowed('GET')
