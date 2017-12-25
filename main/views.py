@@ -90,10 +90,14 @@ class ApiView(BaseApiView):
                     self.response['code'] = 400
                     self.response['message'] = 'Value "{}" is not allowed for "{}" field'.format(params[key], key)
 
+                    return
+
             if key == 'priority':
                 if (params[key], params[key]) not in PRIORITY_CHOICES:
                     self.response['code'] = 400
                     self.response['message'] = 'Value "{}" is not allowed for "{}" field'.format(params[key], key)
+
+                    return
 
                 query['priority'] = params[key]
 

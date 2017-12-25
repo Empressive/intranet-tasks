@@ -45,6 +45,11 @@ class CheckAPI(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content, [])
 
+    def test_wrong_boolean_filter(self):
+        response = self.client.get('/api/', {'is_done': 'Test'})
+
+        self.assertContains(response, 'Value "Test" is not allowed for "is_done" field', status_code=400)
+
     def test_priority_filter(self):
         response = self.client.get('/api/', {'priority': 'High'})
 
@@ -52,6 +57,11 @@ class CheckAPI(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content, [1])
+
+    def test_wrong_priority(self):
+        response = self.client.get('/api/', {'priority': 'Test'})
+
+        self.assertContains(response, 'Value "Test" is not allowed for "priority" field', status_code=400)
 
     def test_parent_filter(self):
         response = self.client.get('/api/', {'parent': 'First'})
@@ -68,3 +78,8 @@ class CheckAPI(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content, [3, 4])
+
+    def test_wrong_parameter(self):
+        response = self.client.get('/api/', {'Wrong': 'Test'})
+
+        self.assertContains(response, 'Parameter "Wrong" is not allowed for this method', status_code=400)
