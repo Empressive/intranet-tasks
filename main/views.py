@@ -1,9 +1,30 @@
 from django.views.generic import TemplateView, View
-from django.http.response import HttpResponseNotAllowed, HttpResponseBadRequest, JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 
 from .models import Term, ToDo
 
 from .constants import CATEGORIES_CHOICES, PRIORITY_CHOICES
+
+
+class BaseApiView(View):
+    response = {'code': 400, 'data': []}
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        self.get_logic(request)
+
+        if self.response['code'] != 200:
+            return HttpResponse(self.response.get('message'), status=self.response['code'])
+
+        return JsonResponse(self.response['data'], safe=False)
+
+    def post(self, request):
+        raise HttpResponse(status=501)
+
+    def get_logic(self, request):
+        raise NotImplementedError
 
 
 class Dinner(TemplateView):
@@ -29,29 +50,27 @@ class Vocabulary(TemplateView):
         return context
 
 
-class ApiView(View):
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+class ApiView(BaseApiView):
+    def get_logic(self, request):
+        self.response = {'code': 400, 'data': []}
 
-    def get(self, request):
-        response = []
-
-        params = request.GET.copy()
         query = {}
-
-        todo = ToDo.objects
+        params = request.GET.copy()
 
         if not params:
-            for row in todo.all().values():
-                response.append(row)
+            for row in ToDo.objects.all().values():
+                self.response['data'].append(row)
 
-            return JsonResponse(response, safe=False)
+            self.response['code'] = 200
+
+            return
 
         for key in params:
             if key not in ['name', 'description', 'is_done', 'priority', 'parent']:
-                return HttpResponseBadRequest(
-                    'Parameter "{}" is not allowed for this method'.format(key)
-                )
+                self.response['code'] = 400
+                self.response['message'] = 'Parameter "{}" is not allowed for this method'.format(key)
+
+                return
 
             if not params[key]:
                 continue
@@ -68,27 +87,20 @@ class ApiView(View):
                 elif params[key] in ['False', 'false', '0']:
                     query[key] = 0
                 else:
-                    return HttpResponseBadRequest(
-                        'Value "{}" is not allowed for "{}" field'.format(params[key], key)
-                    )
+                    self.response['code'] = 400
+                    self.response['message'] = 'Value "{}" is not allowed for "{}" field'.format(params[key], key)
 
             if key == 'priority':
                 if (params[key], params[key]) not in PRIORITY_CHOICES:
-                    return HttpResponseBadRequest(
-                        'Value "{}" is not allowed for "{}" field'.format(params[key], key)
-                    )
+                    self.response['code'] = 400
+                    self.response['message'] = 'Value "{}" is not allowed for "{}" field'.format(params[key], key)
 
                 query['priority'] = params[key]
 
             if key == 'parent':
                 query['parent__name__icontains'] = params[key]
 
-        todo = todo.filter(**query).values()
+        todo = ToDo.objects.filter(**query).values()
 
         for row in todo:
-            response.append(row)
-
-        return JsonResponse(response, safe=False)
-
-    def post(self, request):
-        return HttpResponseNotAllowed('GET')
+            self.response['data'].append(row)
