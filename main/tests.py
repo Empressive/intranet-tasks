@@ -29,8 +29,14 @@ class CheckAPI(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(force_text(response.content))[0]['id'], 1)
 
+    def test_name_lowercase_filter(self):
+        response = self.client.get('/api/', {'name': 'first'})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(json.loads(force_text(response.content))), 0)
+
     def test_description_filter(self):
-        response = self.client.get('/api/', {'description': 'row'})
+        response = self.client.get('/api/', {'description': 'rOw'})
 
         content = [row['id'] for row in json.loads(force_text(response.content))]
 
@@ -64,7 +70,7 @@ class CheckAPI(TestCase):
         self.assertContains(response, 'Value "Test" is not allowed for "priority" field', status_code=400)
 
     def test_parent_filter(self):
-        response = self.client.get('/api/', {'parent': 'First'})
+        response = self.client.get('/api/', {'parent': 'FiRsT'})
 
         content = [row['id'] for row in json.loads(force_text(response.content))]
 
