@@ -43,6 +43,19 @@ class CheckAPI(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content, [1, 2, 3, 4])
 
+    def test_wrong_description_filter(self):
+        response = self.client.get('/api/', {'description': 'ro'})
+
+        content = [row['id'] for row in json.loads(force_text(response.content))]
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(content, [])
+
+    def test_wrong_description_value_filter(self):
+        response = self.client.get('/api/', {'description': 'This is'})
+
+        self.assertContains(response, 'Value "This is" is not allowed for "description" field', status_code=400)
+
     def test_boolean_filter(self):
         response = self.client.get('/api/', {'is_done': 'True'})
 

@@ -79,7 +79,15 @@ class ApiView(BaseApiView):
                 query[key] = params[key]
 
             if key == 'description':
-                query['{}__icontains'.format(key)] = params[key]
+                length = params[key].split(' ')
+
+                if len(length) > 1:
+                    self.response['code'] = 400
+                    self.response['message'] = 'Value "{}" is not allowed for "{}" field'.format(params[key], key)
+
+                    return
+
+                query['description__iregex'.format(key)] = r'\b{}\b'.format(params[key])
 
             if key == 'is_done':
                 if params[key] in ['True', 'true', '1']:
