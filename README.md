@@ -43,7 +43,7 @@ $ source ./env/bin/activate
 | Parameter  | Type | Case-insensitive | Description |
 | ------------- | ------------- | ------------- | ------------- |
 | name  | Text | False | Full match of the text in the name field |
-| description | Text | True | Search for a match of a word in description field |
+| description | Text | True | Full match of the word in the description field |
 | is_done | Boolean | True | Can take values (1, 0, true, false, True, False) |
 | priority | Text | False | Can take values (Low, Normal, High) |
 | parent | Text | True | Partial match of the name of the parent |
